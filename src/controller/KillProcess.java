@@ -15,7 +15,8 @@ public class KillProcess {
 	}
 	
 	public void readProcess(String proc) {
-			String[] procArr = proc.split(" ");
+		String os = os();	
+		String[] procArr = proc.split(" ");
 			try {
 				Process p = Runtime.getRuntime().exec(procArr);
 				InputStream fluxo = p.getInputStream();
@@ -41,8 +42,7 @@ public class KillProcess {
 		}
 	
 	public void mataPid(String valor) {
-		String os = System.getProperty("os.name").toLowerCase();
-		//String cmdNome = "TASKKILL /IM";
+		String os = os();
 		String cmdPid = "TASKKILL /PID";
 		
 		StringBuffer buffer = new StringBuffer();
@@ -62,9 +62,9 @@ public class KillProcess {
 	}
 	
 	public void mataNome(String proc) {
+		String os = os();
 		String cmdNome = "TASKKILL /IM";
-		//String cmdPid = "TASKKILL /PID";
-		
+				
 		StringBuffer buffer = new StringBuffer();
 		String nome = null;
 		try {
